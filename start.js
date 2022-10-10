@@ -2,36 +2,49 @@
 
 //import { Subject } from 'rxjs';
 
-let rxjs = require("rxjs");
-let rxjsOperators = require("rxjs/operators");
+// let rxjs = require("rxjs");
+// let rxjsOperators = require("rxjs/operators");
 
-var first = new rxjs.Subject();
-var second = new rxjs.Subject();
-var destroy$ = new rxjs.Subject();
+// var first = new rxjs.Subject();
+// var second = new rxjs.Subject();
+// var destroy$ = new rxjs.Subject();
 
-first.pipe(
-    rxjsOperators.takeUntil(destroy$),
-    rxjsOperators.switchMap(z => {
-        console.log("first:"+z);
-        return second;
-    })).subscribe(z => {
-        console.log("second:" + z);
-    });
-first.next("1");
-second.next("a");
-first.next("2");
-second.next("b");
-first.next("3");
-second.next("c");
+// first.pipe(
+//     rxjsOperators.takeUntil(destroy$),
+//     rxjsOperators.switchMap(z => {
+//         console.log("first:"+z);
+//         return second;
+//     })).subscribe(z => {
+//         console.log("second:" + z);
+//     });
+// first.next("1");
+// second.next("a");
+// first.next("2");
+// second.next("b");
+// first.next("3");
+// second.next("c");
 
-destroy$.next(true);
+// destroy$.next(true);
 
-first.next("4");
-second.next("d");
-first.next("5");
-second.next("e");
-first.next("6");
-second.next("f");
-first.next("7");
-second.next("g");
+// first.next("4");
+// second.next("d");
+// first.next("5");
+// second.next("e");
+// first.next("6");
+// second.next("f");
+// first.next("7");
+// second.next("g");
 
+function test1(){
+    console.log("test1");
+    return true;
+}
+
+function test2(){
+    console.log("test2");
+    return false;
+}
+
+if(test1()||test2()){
+    console.log("resolved")
+}
